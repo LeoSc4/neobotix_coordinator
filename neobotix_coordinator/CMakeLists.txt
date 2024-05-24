@@ -22,6 +22,9 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(iras_behaviortree_ros2 REQUIRED)
 find_package(iras_interfaces REQUIRED)
+
+find_package(moveit_wrapper REQUIRED)
+
 find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(geometry2 REQUIRED)
@@ -39,6 +42,9 @@ set(DEPENDENCIES
   rclcpp_action
   iras_behaviortree_ros2
   iras_interfaces
+
+  moveit_wrapper
+  
   tf2_ros
   tf2_geometry_msgs
   geometry2

@@ -11,10 +11,10 @@
 #include <neobotix_coordinator/default.h>
 
 #include <iras_behaviortree_ros2/components/RosService.h>
-#include <iras_interfaces/srv/set_velocity.hpp>
+#include <moveit_wrapper/srv/set_velocity.hpp>
 
 
-using SetVelocitySrv = iras_interfaces::srv::SetVelocity;
+using SetVelocitySrv = moveit_wrapper::srv::SetVelocity;
 
 class SetVelocity : public RosService<SetVelocitySrv>
 {

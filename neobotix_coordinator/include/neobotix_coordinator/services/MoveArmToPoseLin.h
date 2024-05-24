@@ -11,11 +11,11 @@
 #include <neobotix_coordinator/default.h>
 
 #include <iras_behaviortree_ros2/components/RosService.h>
-#include <iras_interfaces/srv/move_to_pose.hpp>
+#include <moveit_wrapper/srv/move_to_pose.hpp>
 
-using MoveToPoseLinSrv = iras_interfaces::srv::MoveToPose;
+using MoveArmToPoseLinSrv = moveit_wrapper::srv::MoveToPose;
 
-class MoveArmToPoseLin : public RosService<MoveToPoseLinSrv>
+class MoveArmToPoseLin : public RosService<MoveArmToPoseLinSrv>
 {
 public:
     static BT::PortsList providedPorts();
@@ -24,6 +24,6 @@ public:
 
     std::string ros2_service_name() override;
 
-    void on_send(std::shared_ptr<MoveToPoseLinSrv::Request> request) override;
-    bool on_result(std::shared_ptr<MoveToPoseLinSrv::Response> response, std::shared_ptr<MoveToPoseLinSrv::Request> request) override;
+    void on_send(std::shared_ptr<MoveArmToPoseLinSrv::Request> request) override;
+    bool on_result(std::shared_ptr<MoveArmToPoseLinSrv::Response> response, std::shared_ptr<MoveArmToPoseLinSrv::Request> request) override;
 };

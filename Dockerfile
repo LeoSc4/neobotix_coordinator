@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libqt5opengl5-dev \
     qttools5-dev-tools \
     nano \
+    ros-$ROS_DISTRO-ur \
     && apt-get clean && rm -rf /var/lib/apt/lists/* 
 
 RUN python3 -m pip install -U pip setuptools
@@ -65,7 +66,7 @@ RUN git clone -b humble https://github.com/AndreasZachariae/BehaviorTree.IRAS.gi
 
 COPY neobotix_coordinator ./neobotix_coordinator
 COPY iras_interfaces ./iras_interfaces
-
+COPY moveit_wrapper ./moveit_wrapper
 # Clone private Github repos with ssh key
 # USER root
 # RUN mkdir -m 700 /root/.ssh && \

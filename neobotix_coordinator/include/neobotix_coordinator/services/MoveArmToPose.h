@@ -11,9 +11,9 @@
 #include <neobotix_coordinator/default.h>
 
 #include <iras_behaviortree_ros2/components/RosService.h>
-#include <iras_interfaces/srv/move_to_pose.hpp>
+#include <moveit_wrapper/srv/move_to_pose.hpp>
 
-using MoveToPoseSrv = iras_interfaces::srv::MoveToPose;
+using MoveToPoseSrv = moveit_wrapper::srv::MoveToPose;
 
 class MoveArmToPose : public RosService<MoveToPoseSrv>
 {

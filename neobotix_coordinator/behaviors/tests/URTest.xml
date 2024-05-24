@@ -3,7 +3,7 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="SetVelocity" velocity_scaling="0.05"/>
+            <Action ID="SetVelocity" velocity_scaling="0.25"/>
             <Action ID="MoveArmToJoints" joint1="-1.57" joint2="-0.52" joint3="-1.57" joint4="-3.67" joint5="1.57" joint6="0"/>
         </Sequence>
     </BehaviorTree>

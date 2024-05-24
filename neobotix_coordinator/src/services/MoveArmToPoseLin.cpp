@@ -6,7 +6,7 @@
  */
 std::string MoveArmToPoseLin::ros2_service_name()
 {
-    return "/move_to_pose_ptp";
+    return "/move_to_pose_lin";
 }
 
 /**
@@ -34,7 +34,7 @@ BT::PortsList MoveArmToPoseLin::providedPorts()
 /**
  * @brief Set the content of the request message which is sent to the ROS2 service server.
  */
-void MoveArmToPoseLin::on_send(std::shared_ptr<MoveToPoseLinSrv::Request> request)
+void MoveArmToPoseLin::on_send(std::shared_ptr<MoveArmToPoseLinSrv::Request> request)
 {
     request->pose.position.x = ports.get_value<float>("x");
     request->pose.position.y = ports.get_value<float>("y");
@@ -52,7 +52,7 @@ void MoveArmToPoseLin::on_send(std::shared_ptr<MoveToPoseLinSrv::Request> reques
 /**
  * @brief Define what happens when recieving the response from the ROS2 service server.
  */
-bool MoveArmToPoseLin::on_result(std::shared_ptr<MoveArmToPoseLinSrv::Response>, std::shared_ptr<MoveToPoseLinSrv::Request>)
+bool MoveArmToPoseLin::on_result(std::shared_ptr<MoveArmToPoseLinSrv::Response>, std::shared_ptr<MoveArmToPoseLinSrv::Request>)
 {
     log("MoveArmToPoseLin completed");
     return true;
