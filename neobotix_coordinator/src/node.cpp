@@ -47,6 +47,7 @@
 #include <neobotix_coordinator/services/SetVelocity.h>
 #include <neobotix_coordinator/services/MoveArmToPosePtp.h>
 #include <neobotix_coordinator/services/MoveArmToPoseLin.h>
+#include <neobotix_coordinator/services/MoveURGripper.h>
 
 
 
@@ -97,6 +98,7 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     factory.registerNodeType<SetVelocity>("SetVelocity");
     factory.registerNodeType<MoveArmToPosePtp>("MoveArmToPosePtp");
     factory.registerNodeType<MoveArmToPosePtp>("MoveArmToPoseLin");
+    factory.registerNodeType<MoveURGripper>("MoveURGripper");
 
 
 
