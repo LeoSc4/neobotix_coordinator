@@ -30,6 +30,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(geometry2 REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(ur_msgs)
 #find_package(object_detector_tensorflow_interfaces REQUIRED)
 
 include_directories(
@@ -51,6 +52,7 @@ set(DEPENDENCIES
   ament_index_cpp
   nav2_msgs
   std_srvs
+  ur_msgs
   #object_detector_tensorflow_interfaces
 )
 
