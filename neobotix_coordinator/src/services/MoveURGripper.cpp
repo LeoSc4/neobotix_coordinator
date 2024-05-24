@@ -4,7 +4,7 @@
  * @brief Set the name of the ROS2 service server to connect with.
  * @return Topic name as a string.
  */
-std::string ::ros2_service_name()
+std::string MoveURGripper::ros2_service_name()
 {
     return "/io_and_status_controller/set_io";
 }
