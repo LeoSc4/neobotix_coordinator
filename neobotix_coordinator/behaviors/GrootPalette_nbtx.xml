@@ -66,20 +66,18 @@
             <input_port name="compare_to" type="int"/>
             <input_port name="input" type="int"/>
         </Condition>
-        <Action ID="MoveArm">
-            <input_port name="cartesian" type="bool"/>
-            <input_port name="rotation_z" type="float"/>
-            <input_port name="rotation_x" type="float"/>
-            <input_port name="z" type="float"/>
-            <input_port name="speed" type="float"/>
-            <input_port name="y" type="float"/>
-            <input_port name="rotation_y" type="float"/>
-            <input_port name="x" type="float"/>
-        </Action>
         <Condition ID="CheckDiagnosticStatus"/>
         <Condition ID="CheckBattery">
             <input_port name="battery_level" type="float"/>
         </Condition>
+        <Action ID="MoveArmToJoints">
+            <input_port name="joint6" type="float"/>
+            <input_port name="joint5" type="float"/>
+            <input_port name="joint3" type="float"/>
+            <input_port name="joint2" type="float"/>
+            <input_port name="joint4" type="float"/>
+            <input_port name="joint1" type="float"/>
+        </Action>
         <Action ID="MoveArmToPosePtp">
             <input_port name="q_z" type="float"/>
             <input_port name="q_x" type="float"/>
@@ -88,14 +86,6 @@
             <input_port name="q_y" type="float"/>
             <input_port name="y" type="float"/>
             <input_port name="x" type="float"/>
-        </Action>
-        <Action ID="MoveArmToJoints">
-            <input_port name="joint6" type="float"/>
-            <input_port name="joint5" type="float"/>
-            <input_port name="joint3" type="float"/>
-            <input_port name="joint2" type="float"/>
-            <input_port name="joint4" type="float"/>
-            <input_port name="joint1" type="float"/>
         </Action>
         <Action ID="CloseGripper">
             <input_port name="cylinder_ids" type="undefined"/>
@@ -115,16 +105,6 @@
             <input_port name="cylinder_ids" type="undefined"/>
         </Action>
         <Action ID="ClearLocalCostmap"/>
-        <Action ID="MoveArmToPose">
-            <input_port name="cartesian" type="bool"/>
-            <input_port name="q_z" type="float"/>
-            <input_port name="q_x" type="float"/>
-            <input_port name="z" type="float"/>
-            <input_port name="q_w" type="float"/>
-            <input_port name="q_y" type="float"/>
-            <input_port name="y" type="float"/>
-            <input_port name="x" type="float"/>
-        </Action>
         <Action ID="ClearGlobalCostmap"/>
         <Action ID="Wait">
             <input_port name="seconds" type="int"/>
