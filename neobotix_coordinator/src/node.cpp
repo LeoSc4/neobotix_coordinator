@@ -71,7 +71,7 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     factory.registerNodeType<ParameterRequest<bool>>("BoolParameterRequest");
     factory.registerNodeType<ParameterRequest<int>>("IntParameterRequest");
     factory.registerNodeType<ParameterRequest<float>>("FloatParameterRequest");
-    factory.registerNodeType<ParameterRequest<std::string>("StringParameterRequest");
+    factory.registerNodeType<ParameterRequest<std::string>>("StringParameterRequest");
 
     // Arm
     //factory.registerNodeType<MoveArm>("MoveArm");
