@@ -67,6 +67,9 @@
             <input_port name="input" type="int"/>
         </Condition>
         <Condition ID="CheckDiagnosticStatus"/>
+        <Action ID="GetArucoPosition">
+            <input_port name="aruco_id" type="int"/>
+        </Action>
         <Condition ID="CheckBattery">
             <input_port name="battery_level" type="float"/>
         </Condition>
