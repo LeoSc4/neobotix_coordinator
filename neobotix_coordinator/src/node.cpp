@@ -23,9 +23,9 @@
 #include <neobotix_coordinator/services/ParameterRequest.h>
 
 // Arm
-#include <neobotix_coordinator/actions/MoveArm.h>
-#include <neobotix_coordinator/services/MoveArmToJoints.h>
-#include <neobotix_coordinator/services/MoveArmToPose.h>
+// #include <neobotix_coordinator/actions/MoveArm.h>
+// #include <neobotix_coordinator/services/MoveArmToJoints.h>
+// include <neobotix_coordinator/services/MoveArmToPose.h>
 
 // Navigation
 #include <neobotix_coordinator/actions/MoveBase.h>
@@ -47,8 +47,9 @@
 #include <neobotix_coordinator/services/SetVelocity.h>
 #include <neobotix_coordinator/services/MoveArmToPosePtp.h>
 #include <neobotix_coordinator/services/MoveArmToPoseLin.h>
+#include <neobotix_coordinator/services/MoveArmToJoints.h>
 #include <neobotix_coordinator/services/MoveURGripper.h>
-/*#include <neobotix_coordinator/services/GetArucoPosition.h>*/
+//#include <neobotix_coordinator/services/GetArucoPosition.h>
 
 
 
@@ -70,12 +71,12 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     factory.registerNodeType<ParameterRequest<bool>>("BoolParameterRequest");
     factory.registerNodeType<ParameterRequest<int>>("IntParameterRequest");
     factory.registerNodeType<ParameterRequest<float>>("FloatParameterRequest");
-    factory.registerNodeType<ParameterRequest<std::string>>("StringParameterRequest");
+    factory.registerNodeType<ParameterRequest<std::string>("StringParameterRequest");
 
     // Arm
-    factory.registerNodeType<MoveArm>("MoveArm");
-    factory.registerNodeType<MoveArmToJoints>("MoveArmToJoints");
-    factory.registerNodeType<MoveArmToPose>("MoveArmToPose");
+    //factory.registerNodeType<MoveArm>("MoveArm");
+    //factory.registerNodeType<MoveArmToJoints>("MoveArmToJoints");
+    //factory.registerNodeType<MoveArmToPose>("MoveArmToPose");
 
     // Navigation
     factory.registerNodeType<MoveBase>("MoveBase");
@@ -99,8 +100,9 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     factory.registerNodeType<SetVelocity>("SetVelocity");
     factory.registerNodeType<MoveArmToPosePtp>("MoveArmToPosePtp");
     factory.registerNodeType<MoveArmToPoseLin>("MoveArmToPoseLin");
+    factory.registerNodeType<MoveArmToJoints>("MoveArmToJoints");
     factory.registerNodeType<MoveURGripper>("MoveURGripper");
-    // factory.registerNodeType<GetArucoPosition("GetArucoPosit ion");
+    //factory.registerNodeType<GetArucoPosition>("GetArucoPosition");
 
 
     XmlGenerator xml_generator(&factory);
