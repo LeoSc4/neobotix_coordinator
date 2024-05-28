@@ -27,8 +27,7 @@ BT::PortsList MoveArmToPoseLin::providedPorts()
             BT::InputPort<float>("q_x"),
             BT::InputPort<float>("q_y"),
             BT::InputPort<float>("q_z"),
-            BT::InputPort<float>("q_w"),
-            BT::InputPort<bool>("cartesian")};
+            BT::InputPort<float>("q_w")};
 }
 
 /**
@@ -43,7 +42,6 @@ void MoveArmToPoseLin::on_send(std::shared_ptr<MoveArmToPoseLinSrv::Request> req
     request->pose.orientation.y = ports.get_value<float>("q_y");
     request->pose.orientation.z = ports.get_value<float>("q_z");
     request->pose.orientation.w = ports.get_value<float>("q_w");
-    request->cart = ports.get_value<bool>("cartesian");
 
     log("Move arm lin to pose (" + Converter::ftos(request->pose.position.x) + ", " + Converter::ftos(request->pose.position.y) + ", " + Converter::ftos(request->pose.position.z) + ")");
     log("Orientation (" + Converter::ftos(request->pose.orientation.x) + ", " + Converter::ftos(request->pose.orientation.y) + ", " + Converter::ftos(request->pose.orientation.z) + ", " + Converter::ftos(request->pose.orientation.w) + ")");
