@@ -4,7 +4,7 @@
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
             <Action ID="SetVelocity" velocity_scaling="0.2"/>
-            <Action ID="MoveArmToPoseLin" x="-0.41016" y="0.43918" z="0.28582" q_x="0" q_y="0" q_z="1" q_w="0" cartesian="True"/>
+            <Action ID="MoveArmToPoseLin" x="-0.41016" y="0.43918" z="0.28582" q_x="0" q_y="0" q_z="1" q_w="0"/>
             <!-- <Action ID="MoveArmToJoints" joint1="-0.994837" joint2="-1.4137" joint3="-1.5533" joint4="4.555" joint5="1.53" joint6="0.5759"/> -->
             <!--<Action ID="MoveURGripper" fun="1" pin="10" state="1.0"/>-->
             <!--<Action ID="MoveArmToJoints" joint1="-1.902" joint2="-1.64" joint3="-1.3439" joint4="4.555" joint5="1.53" joint6="-0.33161"/>-->
