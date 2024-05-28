@@ -13,7 +13,7 @@
 #include <neobotix_coordinator/default.h>
 
 #include <iras_behaviortree_ros2/components/RosService.h>
-#include <camera_interfaces/srv/GetArucoPose.srv>
+#include <camera_interfaces/srv/get_aruco_pose.hpp>
 
 
 
