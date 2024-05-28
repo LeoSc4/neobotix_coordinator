@@ -9,6 +9,7 @@
             <!--<Action ID="MoveURGripper" fun="1" pin="10" state="1.0"/>-->
             <!--<Action ID="MoveArmToJoints" joint1="-1.902" joint2="-1.64" joint3="-1.3439" joint4="4.555" joint5="1.53" joint6="-0.33161"/>-->
             <!-- <Action ID="MoveURGripper" fun="1" pin="10" state="0.0"/> -->
+            <!-- MoveArmToPosePtp does work, but generated trajectories are not usable in cartesian space (not a good performance/ short path)-->
         </Sequence>
     </BehaviorTree>
 
