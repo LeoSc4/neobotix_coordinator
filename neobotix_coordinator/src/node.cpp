@@ -98,7 +98,7 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     // UR for Neobotix
     factory.registerNodeType<SetVelocity>("SetVelocity");
     factory.registerNodeType<MoveArmToPosePtp>("MoveArmToPosePtp");
-    factory.registerNodeType<MoveArmToPosePtp>("MoveArmToPoseLin");
+    factory.registerNodeType<MoveArmToPoseLin>("MoveArmToPoseLin");
     factory.registerNodeType<MoveURGripper>("MoveURGripper");
     // factory.registerNodeType<GetArucoPosition("GetArucoPosit ion");
 
