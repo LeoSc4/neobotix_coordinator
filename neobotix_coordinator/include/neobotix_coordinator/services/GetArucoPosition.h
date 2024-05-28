@@ -7,7 +7,7 @@
  * @since 1.0.0 (2023.05.19)
  *********************************************************/
 
-/*
+
 #pragma once
 
 #include <neobotix_coordinator/default.h>
@@ -32,4 +32,3 @@ public:
     bool on_result(std::shared_ptr<GetArucoPositionSrv::Response> response, std::shared_ptr<GetArucoPositionSrv::Request> request) override;
 };
 
-*/

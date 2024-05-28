@@ -49,7 +49,7 @@
 #include <neobotix_coordinator/services/MoveArmToPoseLin.h>
 #include <neobotix_coordinator/services/MoveArmToJoints.h>
 #include <neobotix_coordinator/services/MoveURGripper.h>
-//#include <neobotix_coordinator/services/GetArucoPosition.h>
+#include <neobotix_coordinator/services/GetArucoPosition.h>
 
 
 
@@ -102,7 +102,7 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     factory.registerNodeType<MoveArmToPoseLin>("MoveArmToPoseLin");
     factory.registerNodeType<MoveArmToJoints>("MoveArmToJoints");
     factory.registerNodeType<MoveURGripper>("MoveURGripper");
-    //factory.registerNodeType<GetArucoPosition>("GetArucoPosition");
+    factory.registerNodeType<GetArucoPosition>("GetArucoPosition");
 
 
     XmlGenerator xml_generator(&factory);
