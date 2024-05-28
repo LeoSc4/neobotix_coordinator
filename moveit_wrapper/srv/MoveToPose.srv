@@ -1,4 +1,3 @@
 geometry_msgs/Pose pose
-bool cart
 ---
 bool success
