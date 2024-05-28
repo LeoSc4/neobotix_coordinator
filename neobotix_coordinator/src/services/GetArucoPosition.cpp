@@ -21,7 +21,15 @@ std::string GetArucoPosition::ros2_service_name()
  */
 BT::PortsList GetArucoPosition::providedPorts()
 {
-    return {BT::InputPort<int>("aruco_id")};
+    return {BT::InputPort<int>("aruco_id"),
+            BT::OutputPort<float>("x"),
+            BT::OutputPort<float>("y"),
+            BT::OutputPort<float>("z"),
+            BT::OutputPort<float>("q_x"),
+            BT::OutputPort<float>("q_y"),
+            BT::OutputPort<float>("q_z"),
+            BT::OutputPort<float>("q_w"),
+            };
 }
 
 /**
@@ -37,9 +45,33 @@ void GetArucoPosition::on_send(std::shared_ptr<GetArucoPositionSrv::Request> req
 /**
  * @brief Define what happens when recieving the response from the ROS2 service server.
  */
-bool GetArucoPosition::on_result(std::shared_ptr<GetArucoPositionSrv::Response>, std::shared_ptr<GetArucoPositionSrv::Request>)
+bool GetArucoPosition::on_result(std::shared_ptr<GetArucoPositionSrv::Response> response, std::shared_ptr<GetArucoPositionSrv::Request>)
 {  
+    geometry_msgs::msg::TransformStamped aruco_pose = response->transform_stamped;
+    bool aruco_found = response->found;
+    float x=0, y=0, z=0, q_x=0, q_y=0, q_z=0, q_w=0;
+
+    x = aruco_pose.transform.translation.x;
+    y = aruco_pose.transform.translation.y;
+    z = aruco_pose.transform.translation.z;
+    q_x = aruco_pose.transform.rotation.x;
+    q_y = aruco_pose.transform.rotation.y;
+    q_z = aruco_pose.transform.rotation.z;
+    q_w = aruco_pose.transform.rotation.w;
+
+
+    ports.set_value<float>("x", x);
+    ports.set_value<float>("y", y);
+    ports.set_value<float>("z", z);
+    ports.set_value<float>("q_x", q_x);
+    ports.set_value<float>("q_y", q_y);
+    ports.set_value<float>("q_z", q_z);
+    ports.set_value<float>("q_w", q_w);
+
+
     log("GetArucoPosition completed");
+    log("Response Aruco_Found = " + std::to_string(aruco_found));
+    log("Marker Position: x=" + std::to_string(x) + ", y=" + std::to_string(y) + ", z=" + std::to_string(z) + ", q_x=" + std::to_string(q_x) +", q_y=" + std::to_string(q_y) + ", q_z="+std::to_string(q_z) + ", q_w=" + std::to_string(q_w));
     return true;
 }
 
