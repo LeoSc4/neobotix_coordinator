@@ -33,7 +33,7 @@ void SetVelocity::on_send(std::shared_ptr<SetVelocitySrv::Request> request)
 
     request->velocity_scaling = ports.get_value<float>("velocity_scaling");
 
-    log("Scale velocity to (" + Converter::ftos(request->velocity_scaling) + "%.");
+    log("Scale velocity to (" + Converter::ftos(request->velocity_scaling) + ".");
 }
 
 /**

@@ -16,6 +16,8 @@
     <depend>rclcpp_action</depend>
     <depend>iras_behaviortree_ros2</depend>
     <depend>iras_interfaces</depend>
+    <depend>camera_interfaces</depend>
+
     
     <depend>moveit_wrapper</depend>
 

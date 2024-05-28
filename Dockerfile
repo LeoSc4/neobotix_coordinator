@@ -67,6 +67,8 @@ RUN git clone -b humble https://github.com/AndreasZachariae/BehaviorTree.IRAS.gi
 COPY neobotix_coordinator ./neobotix_coordinator
 COPY iras_interfaces ./iras_interfaces
 COPY moveit_wrapper ./moveit_wrapper
+COPY camera_interfaces ./camera_interfaces
+
 # Clone private Github repos with ssh key
 # USER root
 # RUN mkdir -m 700 /root/.ssh && \

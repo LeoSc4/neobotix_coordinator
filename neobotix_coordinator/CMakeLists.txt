@@ -22,6 +22,7 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(iras_behaviortree_ros2 REQUIRED)
 find_package(iras_interfaces REQUIRED)
+#find_package(camera_interfaces REQUIRED)
 
 find_package(moveit_wrapper REQUIRED)
 
@@ -43,6 +44,7 @@ set(DEPENDENCIES
   rclcpp_action
   iras_behaviortree_ros2
   iras_interfaces
+ # camera_interfaces
 
   moveit_wrapper
   

@@ -3,8 +3,8 @@
  * Module : ROS2-Node "IRASCoordinator"
  * Purpose : Calculates MarkerPosition from tf transformations to apriltag no. 4
  *
- * @author Andreas Zachariae
- * @author Frederik Plahl
+ * @author 
+ * @author 
  * @since 1.1.0 (2021.09.06)
  *********************************************************/
 #pragma once

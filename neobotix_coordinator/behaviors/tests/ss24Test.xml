@@ -3,10 +3,15 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="BaseMovement" quaternion_w="0" quaternion_x="0" quaternion_y="0" quaternion_z="1" x="0" y="0"/>
-            <Delay delay_msec="5000">
-                <Action ID="BaseMovement" quaternion_w="0" quaternion_x="0" quaternion_y="0" quaternion_z="1" x="10" y="10"/>
-            </Delay>
+            <MoveBase x="-5.54769" y="2.87302"/>
+            <Action ID="SetVelocity" velocity_scaling="0.2"/>
+            <Action ID="MoveArmToJoints" joint1="-0.994837" joint2="-1.4137" joint3="-1.5533" joint4="4.555" joint5="1.53" joint6="0.5759"/>
+            <Action ID="MoveURGripper" fun="1" pin="10" state="0.0"/>
+            
+            <MoveBase x="0.79" y="9.90"/>
+            <Action ID="MoveArmToJoints" joint1="-1.902" joint2="-1.64" joint3="-1.3439" joint4="" joint5="4.5727" joint6="-0.33161"/>           
+            <Action ID="MoveURGripper" fun="1" pin="10" state="1.0"/>
+        
         </Sequence>
     </BehaviorTree>
     <!-- ////////// -->
