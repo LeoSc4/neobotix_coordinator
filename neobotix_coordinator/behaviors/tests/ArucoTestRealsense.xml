@@ -3,7 +3,9 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="GetArucoPosition" aruco_id="1"/>
+            <Action ID="GetArucoPosition" aruco_id="1" x="{x}" y="{y}" z="{z}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" q_w="{q_w}"/>
+            <Action ID="SetVelocity" velocity_scaling="{x}"/>
+
         </Sequence>
     </BehaviorTree>
     <!-- ////////// -->
