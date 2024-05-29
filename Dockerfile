@@ -68,6 +68,7 @@ COPY neobotix_coordinator ./neobotix_coordinator
 COPY iras_interfaces ./iras_interfaces
 COPY moveit_wrapper ./moveit_wrapper
 COPY camera_interfaces ./camera_interfaces
+COPY select_table_interfaces ./select_table_interfaces
 
 # Clone private Github repos with ssh key
 # USER root
