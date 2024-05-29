@@ -1,5 +1,9 @@
 <root>
     <TreeNodesModel>
+        <Action ID="ChooseTable">
+            <output_port name="Requested_Table" type="int"/>
+            <input_port name="Send_Request" type="bool"/>
+        </Action>
         <Action ID="MoveArmToPoseLin">
             <input_port name="q_z" type="float"/>
             <input_port name="q_x" type="float"/>
