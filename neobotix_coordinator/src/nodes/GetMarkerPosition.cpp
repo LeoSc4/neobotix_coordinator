@@ -68,7 +68,7 @@ BT::NodeStatus GetMarkerPosition::on_running()
             {
                 std::string marker_frame = "aruco_" + std::to_string(ports.get_value<int>("aruco_id"));
                 RCLCPP_INFO(
-                    get_node_handle()->get_logger(), "Calculate transform from base_link to  %s", marker_frame);
+                    get_node_handle()->get_logger(), "Calculate transform from base_link to %s", marker_frame.c_str());
 
                 // tf_buffer_->canTransform("base_link", aruco_{aruco_id});
                 transformStamped = tf_buffer_->lookupTransform(
