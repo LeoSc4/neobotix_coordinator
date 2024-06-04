@@ -3,9 +3,8 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="GetArucoPosition" aruco_id="1" x="{x}" y="{y}" z="{z}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" q_w="{q_w}"/>
-            <Action ID="SetVelocity" velocity_scaling="{x}"/>
-
+            <Action ID="GetArucoPosition" aruco_id="1" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <Action ID="GetMarkerPosition" aruco_id="1" base_frame="base_link" max_seconds="5" q_w="" q_x="" q_y="" q_z="" x="" y="" z=""/>
         </Sequence>
     </BehaviorTree>
     <!-- ////////// -->
@@ -49,6 +48,10 @@
         </Condition>
         <Condition ID="CheckDiagnosticStatus"/>
         <Condition ID="CheckStop"/>
+        <Action ID="ChooseTable">
+            <output_port name="Requested_Table" type="int"/>
+            <input_port name="Send_Request" type="bool"/>
+        </Action>
         <Action ID="ClearGlobalCostmap"/>
         <Action ID="ClearLocalCostmap"/>
         <Action ID="CloseGripper">
@@ -66,14 +69,22 @@
         </Action>
         <Action ID="GetArucoPosition">
             <input_port name="aruco_id" type="int"/>
+            <output_port name="q_w" type="float"/>
+            <output_port name="q_x" type="float"/>
+            <output_port name="q_y" type="float"/>
+            <output_port name="q_z" type="float"/>
+            <output_port name="x" type="float"/>
+            <output_port name="y" type="float"/>
+            <output_port name="z" type="float"/>
         </Action>
         <Action ID="GetMarkerPosition">
+            <input_port name="aruco_id" type="int"/>
             <input_port name="base_frame" type="std::string"/>
-            <input_port name="marker_frame" type="std::string"/>
             <input_port name="max_seconds" type="int"/>
-            <output_port name="rotation_x" type="float"/>
-            <output_port name="rotation_y" type="float"/>
-            <output_port name="rotation_z" type="float"/>
+            <output_port name="q_w" type="float"/>
+            <output_port name="q_x" type="float"/>
+            <output_port name="q_y" type="float"/>
+            <output_port name="q_z" type="float"/>
             <output_port name="x" type="float"/>
             <output_port name="y" type="float"/>
             <output_port name="z" type="float"/>
@@ -122,6 +133,9 @@
             <input_port name="quaternion_z" type="float"/>
             <input_port name="x" type="float"/>
             <input_port name="y" type="float"/>
+        </Action>
+        <Action ID="MoveBaseToTable">
+            <input_port name="table_id" type="int"/>
         </Action>
         <Action ID="MoveURGripper">
             <input_port name="fun" type="int"/>
