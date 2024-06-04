@@ -4,7 +4,7 @@
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
             <Action ID="GetArucoPosition" aruco_id="1" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
-            <Action ID="GetMarkerPosition" aruco_id="1" base_frame="base_link" max_seconds="5" q_w="" q_x="" q_y="" q_z="" x="" y="" z=""/>
+            <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="base_link" max_seconds="5" q_w="" q_x="" q_y="" q_z="" x="" y="" z=""/>
         </Sequence>
     </BehaviorTree>
     <!-- ////////// -->
@@ -77,7 +77,7 @@
             <output_port name="y" type="float"/>
             <output_port name="z" type="float"/>
         </Action>
-        <Action ID="GetMarkerPosition">
+        <Action ID="GetTfMarkerToBase">
             <input_port name="aruco_id" type="int"/>
             <input_port name="base_frame" type="std::string"/>
             <input_port name="max_seconds" type="int"/>

@@ -19,12 +19,12 @@
 #include <time.h>
 #include <thread>
 
-class GetMarkerPosition : public RosNode
+class GetTfMarkerToBase : public RosNode
 {
 public:
     static BT::PortsList providedPorts();
 
-    GetMarkerPosition(const std::string &name, const BT::NodeConfiguration &config);
+    GetTfMarkerToBase(const std::string &name, const BT::NodeConfiguration &config);
 
     BT::NodeStatus on_start() override;
     BT::NodeStatus on_running() override;

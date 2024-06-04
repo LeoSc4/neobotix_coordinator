@@ -35,7 +35,6 @@
 
 // Camera
 #include <neobotix_coordinator/nodes/CalculateOffsets.h>
-#include <neobotix_coordinator/nodes/GetMarkerPosition.h>
 // #include <neobotix_coordinator/services/DetectObject.h>
 
 // Gripper 
@@ -50,6 +49,7 @@
 #include <neobotix_coordinator/services/MoveArmToJoints.h>
 #include <neobotix_coordinator/services/MoveURGripper.h>
 #include <neobotix_coordinator/services/GetArucoPosition.h>
+#include <neobotix_coordinator/nodes/GetTfMarkerToBase.h>
 #include <neobotix_coordinator/services/ChooseTable.h>
 #include <neobotix_coordinator/actions/MoveBaseToTable.h>
 
@@ -88,7 +88,6 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
 
     // Camera
     factory.registerNodeType<CalculateOffsets>("CalculateOffsets");
-    factory.registerNodeType<GetMarkerPosition>("GetMarkerPosition");
     //factory.registerNodeType<DetectObject>("DetectObject");
 
     // Misc
@@ -105,6 +104,7 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     factory.registerNodeType<MoveArmToJoints>("MoveArmToJoints");
     factory.registerNodeType<MoveURGripper>("MoveURGripper");
     factory.registerNodeType<GetArucoPosition>("GetArucoPosition");
+    factory.registerNodeType<GetTfMarkerToBase>("GetTfMarkerToBase");
     factory.registerNodeType<ChooseTable>("ChooseTable");
     factory.registerNodeType<MoveBaseToTable>("MoveBaseToTable");
 

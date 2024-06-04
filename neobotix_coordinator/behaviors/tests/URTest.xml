@@ -74,7 +74,7 @@
             <input_port name="title" type="std::string"/>
             <output_port name="value" type="float"/>
         </Action>
-        <Action ID="GetMarkerPosition">
+        <Action ID="GetTfMarkerToBase">
             <input_port name="base_frame" type="std::string"/>
             <input_port name="marker_frame" type="std::string"/>
             <input_port name="max_seconds" type="int"/>

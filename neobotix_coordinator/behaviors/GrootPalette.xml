@@ -3,7 +3,7 @@
         <Action ID="SetVelocity">
             <input_port name="velocity_scaling" type="float"/>
         </Action>
-        <Action ID="GetMarkerPosition">
+        <Action ID="GetTfMarkerToBase">
             <output_port name="y" type="float"/>
             <output_port name="rotation_y" type="float"/>
             <output_port name="x" type="float"/>

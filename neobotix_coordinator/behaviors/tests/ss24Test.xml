@@ -3,14 +3,30 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <MoveBase x="-5.54769" y="2.87302"/>
+            <!--Move Neobotix Base  to table-->
+            <MoveBase x="-5.54769" y="2.87302"/> 
             <Action ID="SetVelocity" velocity_scaling="0.2"/>
-            <Action ID="MoveArmToJoints" joint1="-0.994837" joint2="-1.4137" joint3="-1.5533" joint4="4.555" joint5="1.53" joint6="0.5759"/>
-            <Action ID="MoveURGripper" fun="1" pin="10" state="0.0"/>
             
+            <!--Move UR to Auroco detection pose and get Aruco Position-->
+            <Action ID="MoveArmToJoints" joint1="-0.994837" joint2="-1.4137" joint3="-1.5533" joint4="4.555" joint5="1.53" joint6="0.5759"/>
+            <Action ID="GetArucoPosition" aruco_id="1" x="{x}" y="{y}" z="{z}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" q_w="{q_w}"/>
+
+            <!--Pick cup-->
+            <Action ID="SetVelocity" velocity_scaling="0.1"/>
+            <Action ID="MoveArmToPoseLin" x="-0.01" y="0.38" z="0.5" q_x="0.0" q_y="1.0" q_z="0.0" q_w="0.0"/>
+            <Action ID="MoveURGripper" fun="1" pin="10" state="1.0"/> <!--Close Gripper-->
+            
+            <!--Move UR to safe pre cup place position-->
+            <Action ID="MoveArmToPoseLin" x="-0.01" y="0.38" z="0.5" q_x="0.0" q_y="1.0" q_z="0.0" q_w="0.0"/>
+            
+            <!--Place Cup-->
+            <Action ID="MoveArmToPoseLin" x="-0.01" y="0.38" z="0.5" q_x="0.0" q_y="1.0" q_z="0.0" q_w="0.0"/>
+            <Action ID="MoveURGripper" fun="1" pin="10" state="1.0"/> <!--Open Gripper-->
+            <Action ID="MoveArmToPoseLin" x="-0.01" y="0.38" z="0.5" q_x="0.0" q_y="1.0" q_z="0.0" q_w="0.0"/>
+            
+            <!--Move Neobotix Base  to HomeBase-->
+            <Action ID="MoveArmToPoseLin" x="-0.01" y="0.38" z="0.5" q_x="0.0" q_y="1.0" q_z="0.0" q_w="0.0"/> <!--MoveArmToSafePosition-->
             <MoveBase x="0.79" y="9.90"/>
-            <Action ID="MoveArmToJoints" joint1="-1.902" joint2="-1.64" joint3="-1.3439" joint4="" joint5="4.5727" joint6="-0.33161"/>           
-            <Action ID="MoveURGripper" fun="1" pin="10" state="1.0"/>
         
         </Sequence>
     </BehaviorTree>

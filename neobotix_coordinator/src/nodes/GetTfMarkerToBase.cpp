@@ -1,4 +1,4 @@
-#include <neobotix_coordinator/nodes/GetMarkerPosition.h>
+#include <neobotix_coordinator/nodes/GetTfMarkerToBase.h>
 
 #define RAD2DEG(x) ((x) * 180.0f / 3.1415)
 #define DEG2RAD(x) ((x) * 3.1415 / 180.0f)
@@ -9,7 +9,7 @@ using namespace std::chrono_literals;
 /**
  * @brief Constructor of the node, initialize e.g. ROS2 subscriber.
  */
-GetMarkerPosition::GetMarkerPosition(const std::string &name, const BT::NodeConfiguration &config) : RosNode(name, config)
+GetTfMarkerToBase::GetTfMarkerToBase(const std::string &name, const BT::NodeConfiguration &config) : RosNode(name, config)
 {
     tf_buffer_ = std::make_unique<tf2_ros::Buffer>(get_node_handle()->get_clock());
     transform_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
@@ -25,7 +25,7 @@ GetMarkerPosition::GetMarkerPosition(const std::string &name, const BT::NodeConf
  *
  * @return List of provided ports.
  */
-BT::PortsList GetMarkerPosition::providedPorts()
+BT::PortsList GetTfMarkerToBase::providedPorts()
 {
     return {BT::InputPort<int>("aruco_id"), // default: 1
             BT::InputPort<int>("max_seconds"),  // default: 5
@@ -43,7 +43,7 @@ BT::PortsList GetMarkerPosition::providedPorts()
  * @brief Define what happens when this node is ticked for the first time.
  * @return BT::NodeStatus RUNNING (Has to return RUNNING to allow on_running to be called)
  */
-BT::NodeStatus GetMarkerPosition::on_start()
+BT::NodeStatus GetTfMarkerToBase::on_start()
 {
     start_time_ = time(NULL);
     last_checked_ = time(NULL);
@@ -55,7 +55,7 @@ BT::NodeStatus GetMarkerPosition::on_start()
  * @brief Define what happens when this node is ticked in RUNNING mode.
  * @return BT::NodeStatus SUCCESS or FAILURE or RUNNING
  */
-BT::NodeStatus GetMarkerPosition::on_running()
+BT::NodeStatus GetTfMarkerToBase::on_running()
 {
     if ((time(NULL) - start_time_) < ports.get_value<int>("max_seconds"))
     {
