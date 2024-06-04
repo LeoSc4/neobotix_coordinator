@@ -72,6 +72,7 @@ bool GetArucoPosition::on_result(std::shared_ptr<GetArucoPositionSrv::Response> 
     log("GetArucoPosition completed");
     log("Response Aruco_Found = " + std::to_string(aruco_found));
     log("Marker Position: x=" + std::to_string(x) + ", y=" + std::to_string(y) + ", z=" + std::to_string(z) + ", q_x=" + std::to_string(q_x) +", q_y=" + std::to_string(q_y) + ", q_z="+std::to_string(q_z) + ", q_w=" + std::to_string(q_w));
+    log("On /tf_static Topic tf2 TransformStamped published with Name aruco_" + std::to_string(ports.get_value<int>("aruco_id")));
     return true;
 }
 
