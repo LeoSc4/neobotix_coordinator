@@ -51,6 +51,7 @@
 #include <neobotix_coordinator/services/MoveURGripper.h>
 #include <neobotix_coordinator/services/GetArucoPosition.h>
 #include <neobotix_coordinator/services/ChooseTable.h>
+#include <neobotix_coordinator/actions/MoveBaseToTable.h>
 
 
 
@@ -105,6 +106,7 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     factory.registerNodeType<MoveURGripper>("MoveURGripper");
     factory.registerNodeType<GetArucoPosition>("GetArucoPosition");
     factory.registerNodeType<ChooseTable>("ChooseTable");
+    factory.registerNodeType<MoveBaseToTable>("MoveBaseToTable");
 
 
     XmlGenerator xml_generator(&factory);

@@ -84,6 +84,9 @@
         <Condition ID="CheckBattery">
             <input_port name="battery_level" type="float"/>
         </Condition>
+        <Action ID="MoveBaseToTable">
+            <input_port name="table_id" type="int"/>
+        </Action>
         <Action ID="MoveArmToJoints">
             <input_port name="joint6" type="float"/>
             <input_port name="joint5" type="float"/>
