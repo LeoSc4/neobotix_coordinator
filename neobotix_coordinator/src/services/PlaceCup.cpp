@@ -1,4 +1,4 @@
-#include <neobotix_coordinator/services/MoveArmToPoseLin.h>
+#include <neobotix_coordinator/services/PlaceCup.h>
 
 /**
  * @brief Set the name of the ROS2 service server to connect with.
@@ -21,102 +21,125 @@ std::string PlaceCup::ros2_service_name()
  */
 BT::PortsList PlaceCup::providedPorts()
 {
-    return {BT::InputPort<int16>("cup_id")};
+    return {BT::InputPort<int>("cup_id"),
+            BT::InputPort<float>("x"),
+            BT::InputPort<float>("y"),
+            BT::InputPort<float>("z"),
+            BT::InputPort<float>("q_x"),
+            BT::InputPort<float>("q_y"),
+            BT::InputPort<float>("q_z"),
+            BT::InputPort<float>("q_w")};
+
+    // return {BT::InputPort<int>("cup_id")};
 }
 
 /**
  * @brief Set the content of the request message which is sent to the ROS2 service server.
  */
-void PlaceCup::on_send(std::shared_ptr<MoveArmToPoseLinSrv::Request> request)
+void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
 {
-    int16_t cup_id = ports.get_value<int16_t>("cup_id");
+    float x, y, z, q_x, q_y, q_z, q_w;
+    int cup_id;
+
+    x = ports.get_value<float>("x");
+    y = ports.get_value<float>("y");
+    z = ports.get_value<float>("z");
+    q_x = ports.get_value<float>("q_x");
+    q_y = ports.get_value<float>("q_y");
+    q_z = ports.get_value<float>("q_z");
+    q_w = ports.get_value<float>("q_w");
+    
+    cup_id = ports.get_value<int>("cup_id");
+
     float x_offset, y_offset, z_offset, q_x_offset, q_y_offset, q_z_offset, q_w_offset;
 
-    switch ( cup_id )
+    switch (cup_id)
       {
-         case '1':
-            x_offset = 0.0;
+         case 1:
+            x_offset = -0.05;
             y_offset = 0.0;
-            z_offset = 0.0;
+            z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
-            uppercase_A++;
+            log("Case 1");
             break;
-         case '2':
-            x_offset = 0.0;
+         case 2:
+            x_offset = 0.05;
             y_offset = 0.0;
-            z_offset = 0.0;
+            z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
-            lowercase_a++;
+            log("Case 2");
             break;
-        case '3':
-            x_offset = 0.0;
+        case 3:
+            x_offset = 0.10;
             y_offset = 0.0;
-            z_offset = 0.0;
+            z_offset = 0.12;          
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
-            lowercase_a++;
             break;
-        case '4':
+        case 4:
             x_offset = 0.0;
             y_offset = 0.0;
-            z_offset = 0.0;
+            z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
-            lowercase_a++;
             break;
-        case '5':  
+        case 5:  
             x_offset = 0.0;
             y_offset = 0.0;
-            z_offset = 0.0;
+            z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
-            lowercase_a++;
             break;
-        case '6':  
+        case 6:  
             x_offset = 0.0;
             y_offset = 0.0;
-            z_offset = 0.0;
+            z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
-            lowercase_a++;
             break;
-         default:
-            other++;
-    }
-   
+      }
+    
+    float x_new, y_new, z_new, q_x_new, q_y_new, q_z_new, q_w_new;
 
+    x_new = x + x_offset;
+    y_new = y + y_offset;
+    z_new = z + z_offset;
+    q_x_new = q_x + q_x_offset;
+    q_y_new = q_y + q_y_offset;
+    q_z_new = q_z + q_z_offset;
+    q_w_new = q_w + q_w_offset;
 
-    request->pose.position.x = ports.get_value<float>("x");
-    request->pose.position.y = ports.get_value<float>("y");
-    request->pose.position.z = ports.get_value<float>("z");
-    request->pose.orientation.x = ports.get_value<float>("q_x");
-    request->pose.orientation.y = ports.get_value<float>("q_y");
-    request->pose.orientation.z = ports.get_value<float>("q_z");
-    request->pose.orientation.w = ports.get_value<float>("q_w");
+    request->pose.position.x = x_new;
+    request->pose.position.y = y_new;
+    request->pose.position.z = z_new;
+    request->pose.orientation.x = q_x_new;
+    request->pose.orientation.y = q_y_new;
+    request->pose.orientation.z = q_z_new;
+    request->pose.orientation.w = q_w_new;
 
     log("Move arm lin to pose (" + Converter::ftos(request->pose.position.x) + ", " + Converter::ftos(request->pose.position.y) + ", " + Converter::ftos(request->pose.position.z) + ")");
-    log("Orientation (" + Converter::ftos(request->pose.orientation.x) + ", " + Converter::ftos(request->pose.orientation.y) + ", " + Converter::ftos(request->pose.orientation.z) + ", " + Converter::ftos(request->pose.orientation.w) + ")");
+    log("Orientation ("     + Converter::ftos(request->pose.orientation.x) + ", " + Converter::ftos(request->pose.orientation.y) + ", " + Converter::ftos(request->pose.orientation.z) + ", " + Converter::ftos(request->pose.orientation.w) + ")");
 }
 
 /**
  * @brief Define what happens when recieving the response from the ROS2 service server.
  */
-bool PlaceCup::on_result(std::shared_ptr<MoveArmToPoseLinSrv::Response>, std::shared_ptr<MoveArmToPoseLinSrv::Request>)
+bool PlaceCup::on_result(std::shared_ptr<PlaceCupSrv::Response>, std::shared_ptr<PlaceCupSrv::Request>)
 {
-    log("MoveArmToPoseLin completed");
+    log("PlaceCupSrv completed");
     return true;
 }

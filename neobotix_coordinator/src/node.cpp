@@ -52,6 +52,7 @@
 #include <neobotix_coordinator/nodes/GetTfMarkerToBase.h>
 #include <neobotix_coordinator/services/ChooseTable.h>
 #include <neobotix_coordinator/actions/MoveBaseToTable.h>
+#include <neobotix_coordinator/services/PlaceCup.h>
 
 
 
@@ -107,6 +108,7 @@ BT::Tree create_tree(const std::string &main_tree_path, const std::string &groot
     factory.registerNodeType<GetTfMarkerToBase>("GetTfMarkerToBase");
     factory.registerNodeType<ChooseTable>("ChooseTable");
     factory.registerNodeType<MoveBaseToTable>("MoveBaseToTable");
+    factory.registerNodeType<PlaceCup>("PlaceCup");
 
 
     XmlGenerator xml_generator(&factory);

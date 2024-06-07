@@ -3,8 +3,51 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="GetArucoPosition" aruco_id="1" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
-            <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="base_link" max_seconds="5" q_w="" q_x="" q_y="" q_z="" x="" y="" z=""/>
+            <!-- Define GetAruco / CameraPosition -->
+            <Action ID="SetVelocity" velocity_scaling="0.15"/>
+
+            <!-- Camera Detection Pose -->
+            <Action ID="MoveArmToPoseLin" x="0.11" y="0.493" z="0.285" q_x="0" q_y="1" q_z="0" q_w="0"/>
+
+            <!-- Aruco Transformation holen -->
+            <Action ID="GetArucoPosition" aruco_id="1" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/> 
+            <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <Action ID="Wait" seconds="5"/>
+
+            <!-- Greifer zu-->
+            <Action ID="MoveURGripper" fun="1" pin="10" state="1.0"/>
+
+            <!-- MoveToTransformedPose including offset for cup 2 -->
+            <Action ID="PlaceCup" cup_id="1" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <Action ID="Wait" seconds="1"/>
+            <!-- Greifer auf-->
+            <Action ID="MoveURGripper" fun="1" pin="10" state="0.0"/>
+            <Action ID="Wait" seconds="2"/>
+
+            <!-- Camera Detection Pose -->
+            <Action ID="MoveArmToPoseLin" x="0.11" y="0.493" z="0.285" q_x="0" q_y="1" q_z="0" q_w="0"/>
+            <Action ID="Wait" seconds="5"/>
+            
+            <!-- Greifer zu-->
+            <Action ID="MoveURGripper" fun="1" pin="10" state="1.0"/>
+
+            <!-- MoveToTransformedPose including offset for cup 2 -->
+            <Action ID="SetVelocity" velocity_scaling="0.1"/>
+            <Action ID="PlaceCup" cup_id="2" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <Action ID="Wait" seconds="2"/>
+            <!-- Greifer auf-->
+            <Action ID="MoveURGripper" fun="1" pin="10" state="0.0"/>
+            <Action ID="Wait" seconds="2"/>
+
+            <!-- PrePlacePose after get cup -->
+            <Action ID="MoveArmToPoseLin" x="0.107" y="0.255" z="0.255" q_x="0" q_y="1" q_z="0" q_w="0"/>
+
+            <!-- MoveToTransformedPose including offset for cup 1 -->
+            <!-- <Action ID="SetVelocity" velocity_scaling="0.1"/>
+            <Action ID="PlaceCup" cup_id="2" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <Action ID="Wait" seconds="2"/> -->
+
+    
         </Sequence>
     </BehaviorTree>
     <!-- ////////// -->
