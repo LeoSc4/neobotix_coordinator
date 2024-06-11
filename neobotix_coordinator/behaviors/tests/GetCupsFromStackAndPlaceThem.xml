@@ -6,9 +6,9 @@
             <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
             <SubTree ID="PlaceCupToTable" name="PlaceCupToTable"/>
             <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
-            <SubTree ID="PlaceCupToTable" name="PlaceCupToTable_5"/>
+            <SubTree ID="PlaceCupToTable_5" name="PlaceCupToTable_5"/>
             <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
-            <SubTree ID="PlaceCupToTable" name="PlaceCupToTable_4"/>
+            <SubTree ID="PlaceCupToTable_4" name="PlaceCupToTable_4"/>
         </Sequence>
     </BehaviorTree>
 
