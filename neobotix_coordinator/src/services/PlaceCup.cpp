@@ -56,8 +56,8 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
     switch (cup_id)
       {
          case 1:
-            x_offset = -0.05;
-            y_offset = 0.0;
+            x_offset = -0.15;
+            y_offset = 0.1;
             z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
@@ -66,8 +66,8 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
             log("Case 1");
             break;
          case 2:
-            x_offset = 0.05;
-            y_offset = 0.0;
+            x_offset = 0.0;
+            y_offset = 0.1;
             z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
@@ -76,36 +76,36 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
             log("Case 2");
             break;
         case 3:
-            x_offset = 0.10;
-            y_offset = 0.0;
-            z_offset = 0.12;          
+            x_offset = 0.15;
+            y_offset = 0.1;
+            z_offset = 0.125;          
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
             break;
         case 4:
-            x_offset = 0.0;
-            y_offset = 0.0;
-            z_offset = 0.12;
+            x_offset = -0.075;
+            y_offset = 0.1;
+            z_offset = 0.125;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
             break;
         case 5:  
-            x_offset = 0.0;
-            y_offset = 0.0;
-            z_offset = 0.12;
+            x_offset = 0.075;
+            y_offset = 0.1;
+            z_offset = 0.125;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
             q_w_offset = 0.0;
             break;
         case 6:  
-            x_offset = 0.0;
-            y_offset = 0.0;
-            z_offset = 0.12;
+            x_offset = 0.0 ;
+            y_offset = 0.2;
+            z_offset = 0.125;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
