@@ -3,6 +3,7 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
+            <MoveBase x="-6.12" y="4.7"/>
             <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
             <SubTree ID="PlaceCupToTable" name="PlaceCupToTable"/>
             <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>

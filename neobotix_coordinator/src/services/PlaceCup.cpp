@@ -138,8 +138,26 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
 /**
  * @brief Define what happens when recieving the response from the ROS2 service server.
  */
-bool PlaceCup::on_result(std::shared_ptr<PlaceCupSrv::Response>, std::shared_ptr<PlaceCupSrv::Request>)
+bool PlaceCup::on_result(std::shared_ptr<PlaceCupSrv::Response> response, std::shared_ptr<PlaceCupSrv::Request>)
 {
-    log("PlaceCupSrv completed");
-    return true;
+
+    
+
+    bool result = response.get()->success;
+
+
+    log("Resultat von dem PlaceCup" + Converter::ftos(response.get()->success));
+
+    //result = ports.get_value<bool>("success");
+
+    if (result = true)
+    {
+        log("PlaceCupSrv completed");
+        return true;
+    } 
+    else
+    {
+        log("PlaceCupSrv failed");
+        return false;
+    } 
 }
