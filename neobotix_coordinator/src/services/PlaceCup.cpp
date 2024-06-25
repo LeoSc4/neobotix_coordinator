@@ -100,7 +100,7 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
-            q_w_offset = 1.57;
+            q_w_offset = 0.0;
             break;
         case 6:  
             x_offset = 0.0 ;

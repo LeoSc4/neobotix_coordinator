@@ -14,9 +14,9 @@
 
     <BehaviorTree ID="GetCupFromStack">
         <Sequence>
-            <Action ID="SetVelocity" velocity_scaling="0.2"/>
+            <Action ID="SetVelocity" velocity_scaling="0.5"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
-            <!-- <Action ID="MoveURGripper" fun="1" pin="10" state="0"/> -->
+            
             <!-- Mid/ Home Pose -->
             <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
 
@@ -25,26 +25,26 @@
 
             <!-- Approach cup pose -->
             <Action ID="MoveArmToJoints" joint1="1.15" joint2="-1.82" joint3="-2.36" joint4="-0.54" joint5="-1.57" joint6="-2.75"/>
-
-            <Action ID="SetVelocity" velocity_scaling="0.05"/> 
+            <Action ID="SetVelocity" velocity_scaling="0.2"/> 
 
             <!-- Move upwards to get cup -->
             <Action ID="MoveArmToPoseLin" q_w="1" q_x="0.0053" q_y="-0.00116636" q_z="-0.014" x="-0.262" y="-0.315" z="0.58"/>
 
             <!-- grip cup -->
-            <Action ID="Wait" seconds="2"/>
+            <Action ID="Wait" seconds="1"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="1"/>
-            <Action ID="Wait" seconds="2"/>
+            <Action ID="Wait" seconds="1"/>
 
             <!-- move down, pull cup from stack -->
             <Action ID="SetVelocity" velocity_scaling="0.1"/>
             <Action ID="MoveArmToPoseLin" q_w="1" q_x="0.0053" q_y="-0.00116636" q_z="-0.014" x="-0.262" y="-0.315" z="0.40"/>
 
             <!-- Exit cup pose -->
+            <Action ID="SetVelocity" velocity_scaling="0.2"/> 
             <Action ID="MoveArmToPoseLin" q_w="1" q_x="0.0053" q_y="-0.00116636" q_z="-0.014" x="-0.35" y="-0.10" z="0.40"/>
 
             <!-- Zwischenpose -->
-            <Action ID="SetVelocity" velocity_scaling="0.2"/>
+            <Action ID="SetVelocity" velocity_scaling="0.5"/>
             <Action ID="MoveArmToJoints" joint1="0" joint2="-0.79" joint3="-2.36" joint4="-1.57" joint5="-1.57" joint6="-3.14"/>
 
             <!-- Mid/ Home Pose -->
@@ -58,7 +58,7 @@
             <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="PlaceCup" cup_id="6" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="4.29" joint5="1.54" joint6="0"/>
+            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
         </Sequence>
     </BehaviorTree>
 
@@ -68,7 +68,7 @@
             <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="PlaceCup" cup_id="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="4.29" joint5="1.54" joint6="0"/>
+            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
         </Sequence>
     </BehaviorTree>
 
@@ -78,7 +78,7 @@
             <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="PlaceCup" cup_id="4" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="4.29" joint5="1.54" joint6="0"/>
+            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
         </Sequence>
     </BehaviorTree>
 
