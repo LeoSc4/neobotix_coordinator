@@ -15,24 +15,40 @@
     <BehaviorTree ID="GetCupFromStack">
         <Sequence>
             <Action ID="SetVelocity" velocity_scaling="0.2"/>
+            <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
             <!-- <Action ID="MoveURGripper" fun="1" pin="10" state="0"/> -->
             <!-- Mid/ Home Pose -->
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="4.29" joint5="1.54" joint6="0"/>
+            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
+
+            <!-- Zwischenpose -->
+            <Action ID="MoveArmToJoints" joint1="0" joint2="-0.79" joint3="-2.36" joint4="-1.57" joint5="-1.57" joint6="-3.14"/>
+
             <!-- Approach cup pose -->
-            <Action ID="MoveArmToJoints" joint1="1.15" joint2="-1.7" joint3="-2.32" joint4="5.60" joint5="4.71" joint6="-2.72"/>
-            <Action ID="SetVelocity" velocity_scaling="0.05"/>
+            <Action ID="MoveArmToJoints" joint1="1.15" joint2="-1.82" joint3="-2.36" joint4="-0.54" joint5="-1.57" joint6="-2.75"/>
+
+            <Action ID="SetVelocity" velocity_scaling="0.05"/> 
+
             <!-- Move upwards to get cup -->
-            <Action ID="MoveArmToPoseLin" q_w="1" q_x="-0.0036886" q_y="0.0029135" q_z="0.0002493" x="-0.26169" y="-0.31872" z="0.580"/>
+            <Action ID="MoveArmToPoseLin" q_w="1" q_x="0.0053" q_y="-0.00116636" q_z="-0.014" x="-0.262" y="-0.315" z="0.58"/>
+
+            <!-- grip cup -->
             <Action ID="Wait" seconds="2"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="1"/>
             <Action ID="Wait" seconds="2"/>
+
+            <!-- move down, pull cup from stack -->
+            <Action ID="SetVelocity" velocity_scaling="0.1"/>
+            <Action ID="MoveArmToPoseLin" q_w="1" q_x="0.0053" q_y="-0.00116636" q_z="-0.014" x="-0.262" y="-0.315" z="0.40"/>
+
             <!-- Exit cup pose -->
-            <Action ID="MoveArmToPoseLin" q_w="1" q_x="-0.0036886" q_y="0.0029135" q_z="0.0002493" x="-0.26169" y="-0.31872" z="0.42834"/>
-            <!-- Get away from stack before rotating -->
-            <Action ID="MoveArmToPoseLin" q_w="1" q_x="-0.0036886" q_y="0.0029135" q_z="0.0002493" x="-0.3" y="0" z="0.42834"/>
+            <Action ID="MoveArmToPoseLin" q_w="1" q_x="0.0053" q_y="-0.00116636" q_z="-0.014" x="-0.35" y="-0.10" z="0.40"/>
+
+            <!-- Zwischenpose -->
             <Action ID="SetVelocity" velocity_scaling="0.2"/>
+            <Action ID="MoveArmToJoints" joint1="0" joint2="-0.79" joint3="-2.36" joint4="-1.57" joint5="-1.57" joint6="-3.14"/>
+
             <!-- Mid/ Home Pose -->
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="4.29" joint5=" 1.54" joint6="0"/>
+            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
         </Sequence>
     </BehaviorTree>
 

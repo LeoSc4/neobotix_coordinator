@@ -64,6 +64,7 @@ WORKDIR /home/$USER/ros2_ws/src
 RUN git clone https://github.com/BehaviorTree/Groot.git
 RUN git clone -b humble https://github.com/AndreasZachariae/BehaviorTree.IRAS.git
 
+
 COPY neobotix_coordinator ./neobotix_coordinator
 COPY iras_interfaces ./iras_interfaces
 COPY moveit_wrapper ./moveit_wrapper

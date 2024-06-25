@@ -85,7 +85,7 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
             q_w_offset = 0.0;
             break;
         case 4:
-            x_offset = -0.075;
+            x_offset = -0.065;
             y_offset = 0.1;
             z_offset = 0.125;
             q_x_offset = 0.0;
@@ -94,17 +94,17 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
             q_w_offset = 0.0;
             break;
         case 5:  
-            x_offset = 0.075;
+            x_offset = 0.065;
             y_offset = 0.1;
             z_offset = 0.125;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
-            q_w_offset = 0.0;
+            q_w_offset = 1.57;
             break;
         case 6:  
             x_offset = 0.0 ;
-            y_offset = 0.2;
+            y_offset = 0.18;
             z_offset = 0.125;
             q_x_offset = 0.0;
             q_y_offset = 0.0;

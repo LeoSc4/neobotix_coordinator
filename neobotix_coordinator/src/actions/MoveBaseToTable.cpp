@@ -38,9 +38,10 @@ void MoveBaseToTable::on_send(MoveBaseToTableAction::Goal &goal)
     {
         goal.pose.header.frame_id = "map";
     
-        goal.pose.pose.position.x = 5.00;
+        goal.pose.pose.position.x = -5.136;
         // goal.pose.pose.position.x = ports.get_value<float>("x");
-        goal.pose.pose.position.y = 6.93;
+        //goal.pose.pose.position.y = 0.27507;
+        goal.pose.pose.position.y = 0.67507;
         // goal.pose.pose.position.y = ports.get_value<float>("y");
         goal.pose.pose.position.z = 0; // z-value not neccessary
     

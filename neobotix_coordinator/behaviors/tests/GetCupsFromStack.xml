@@ -8,7 +8,7 @@
             <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="4.29" joint5="1.54" joint6="0"/>
             <Action ID="MoveArmToJoints" joint1="1.15" joint2="-1.7" joint3="-2.32" joint4="5.60" joint5="4.71" joint6="-2.72"/>
             <Action ID="SetVelocity" velocity_scaling="0.05"/>
-            <Action ID="MoveArmToPoseLin" q_w="1" q_x="-0.0036886" q_y="0.0029135" q_z="0.0002493" x="-0.26169" y="-0.31872" z="0.580"/>
+            <Action ID="MoveArmToPoseLin" q_w="1" q_x="-0.0036886" q_y="0.0029135" q_z="0.0002493" x="-0.26169" y="-0.31872" z="0.580"/> 
             <Action ID="Wait" seconds="2"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="1"/>
             <Action ID="Wait" seconds="2"/>

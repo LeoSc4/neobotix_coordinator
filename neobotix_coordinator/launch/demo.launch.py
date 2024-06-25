@@ -16,8 +16,8 @@ def generate_launch_description():
             # name='Coordinator',
             output='screen',
             parameters=[
-                {'main_tree_path': "/home/docker/ros2_ws/src/neobotix_coordinator/behaviors/demo/AipDemo.xml",
-                 'groot_palette_path': "/home/docker/ros2_ws/src/neobotix_coordinator/behaviors/GrootPalette.xml"}],
+                {'main_tree_path': "/home/docker/ros2_ws/src/neobotix_coordinator/behaviors/tests/Select_Table_1.xml",
+                 'groot_palette_path': "/home/docker/ros2_ws/src/neobotix_coordinator/behaviors/GrootPalette_nbtx.xml"}],
             on_exit=[LogInfo(
                 msg=["Coordinator has stopped. Stopping everything..."]), emit_shutdown_action],
         ),
