@@ -3,14 +3,55 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="MoveBaseToTable" table_id="1"/>
-            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
-            <SubTree ID="PlaceCupToTable" name="PlaceCupToTable"/>
-            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
-            <SubTree ID="PlaceCupToTable_5" name="PlaceCupToTable_5"/>
-            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
-            <SubTree ID="PlaceCupToTable_4" name="PlaceCupToTable_4"/>
 
+            <Action ID="ChooseTable" Requested_Table="{table_id}" Send_Request="True"/>
+
+            <!-- MoveToSafeTravel Pose -->
+            <Action ID="MoveArmToJoints" joint1="-1.56" joint2="-0.6" joint3="-1.69" joint4="-2.41" joint5="1.57" joint6="0"/>
+            
+            <SubTree ID="MoveBaseToTableLeftSide" name="MoveBaseToTableLeftSide" __shared_blackboard ="true"/>
+            <SubTree ID="PickAndPlaceCupsToTable" name="PickAndPlaceCupsToTable" __shared_blackboard ="true"/>
+
+            <!-- MoveToSafeTravel Pose -->
+            <Action ID="MoveArmToJoints" joint1="-1.56" joint2="-0.6" joint3="-1.69" joint4="-2.41" joint5="1.57" joint6="0"/>
+
+            <SubTree ID="MoveBaseToTableRightSide" name="MoveBaseToTableRightSide" __shared_blackboard ="true"/>
+            <SubTree ID="PickAndPlaceCupsToTable" name="PickAndPlaceCupsToTable" __shared_blackboard ="true"/>
+        
+            <!-- MoveToSafeTravel Pose -->
+            <Action ID="MoveArmToJoints" joint1="-1.56" joint2="-0.6" joint3="-1.69" joint4="-2.41" joint5="1.57" joint6="0"/>
+
+            <!-- Move To Neobotix Home -->
+            <MoveBase x="-0.616" y="-1.28" quaternion_x="0.0" quaternion_y="0.0" quaternion_z="0.09" quaternion_w="0.9958"/>
+
+        </Sequence>
+    </BehaviorTree>
+
+    <!-- ////////// -->
+
+    <BehaviorTree ID="PickAndPlaceCupsToTable" name="PickAndPlaceCupsToTable">
+         <Sequence>
+            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
+            <SubTree ID="PlaceCupToTable" name="PlaceCupToTable" __shared_blackboard ="true"/>         
+            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
+            <SubTree ID="PlaceCupToTable_5" name="PlaceCupToTable_5" __shared_blackboard ="true"/>
+            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
+            <SubTree ID="PlaceCupToTable_4" name="PlaceCupToTable_4" __shared_blackboard ="true"/>
+        </Sequence>
+    </BehaviorTree>
+
+
+    <BehaviorTree ID="MoveBaseToTableLeftSide">
+        <Sequence>
+            <Action ID="MoveBaseToTable" table_id="2" table_side = "1" type="1"/>
+            <Action ID="MoveBaseToTable" table_id="2" table_side = "1" type="2"/>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="MoveBaseToTableRightSide">
+        <Sequence>
+            <Action ID="MoveBaseToTable" table_id="2" table_side = "2" type="1"/>
+            <Action ID="MoveBaseToTable" table_id="2" table_side = "2" type="2"/>
         </Sequence>
     </BehaviorTree>
 
@@ -20,7 +61,7 @@
             <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
             
             <!-- Mid/ Home Pose -->
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
+            <!-- <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.08" joint3="-1.62" joint4="-2.00" joint5="1.57" joint6="0"/> -->
 
             <!-- Zwischenpose -->
             <Action ID="MoveArmToJoints" joint1="0" joint2="-0.79" joint3="-2.36" joint4="-1.57" joint5="-1.57" joint6="-3.14"/>
@@ -33,7 +74,7 @@
             <Action ID="MoveArmToPoseLin" q_w="1" q_x="0.0053" q_y="-0.00116636" q_z="-0.014" x="-0.262" y="-0.315" z="0.58"/>
 
             <!-- grip cup -->
-            <Action ID="Wait" seconds="1"/>
+            <!-- <Action ID="Wait" seconds="1"/> -->
             <Action ID="MoveURGripper" fun="1" pin="10" state="1"/>
             <Action ID="Wait" seconds="1"/>
 
@@ -49,8 +90,8 @@
             <Action ID="SetVelocity" velocity_scaling="0.5"/>
             <Action ID="MoveArmToJoints" joint1="0" joint2="-0.79" joint3="-2.36" joint4="-1.57" joint5="-1.57" joint6="-3.14"/>
 
-            <!-- Mid/ Home Pose -->
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
+            <!--Move To Cam Pose -->
+            <Action ID="MoveArmToJoints" joint1="-1.57" joint2="-1.26" joint3="-1.65" joint4="-1.8" joint5="1.57" joint6="0"/>
         </Sequence>
     </BehaviorTree>
 
@@ -58,35 +99,46 @@
 
     <BehaviorTree ID="PlaceCupToTable">
         <Sequence>
-            <Action ID="GetArucoPosition" aruco_id="1" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
-            <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <Action ID="GetArucoPosition" aruco_id="2" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <Action ID="GetTfMarkerToBase" aruco_id="2" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="PlaceCup" cup_id="6" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
+            <!-- <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/> -->
+
+            <!-- MoveToSafeTravel Pose -->
+            <!-- <Action ID="MoveArmToJoints" joint1="-1.56" joint2="-0.6" joint3="-1.69" joint4="-2.41" joint5="1.57" joint6="0"/> -->
         </Sequence>
     </BehaviorTree>
 
     <BehaviorTree ID="PlaceCupToTable_5">
         <Sequence>
-            <Action ID="GetArucoPosition" aruco_id="1" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
-            <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <!-- <Action ID="GetArucoPosition" aruco_id="2" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/> -->
+            <!-- <Action ID="GetTfMarkerToBase" aruco_id="2" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/> -->
             <Action ID="PlaceCup" cup_id="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
+            <!-- <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/> -->
+
+            <!-- MoveToSafeTravel Pose -->
+            <!-- <Action ID="MoveArmToJoints" joint1="-1.56" joint2="-0.6" joint3="-1.69" joint4="-2.41" joint5="1.57" joint6="0"/>            -->
         </Sequence>
     </BehaviorTree>
 
     <BehaviorTree ID="PlaceCupToTable_4">
         <Sequence>
-            <Action ID="GetArucoPosition" aruco_id="1" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
-            <Action ID="GetTfMarkerToBase" aruco_id="1" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
+            <!-- <Action ID="GetArucoPosition" aruco_id="2" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/> -->
+            <!-- <Action ID="GetTfMarkerToBase" aruco_id="2" base_frame="ur_base_link" max_seconds="5" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/> -->
             <Action ID="PlaceCup" cup_id="4" q_w="{q_w}" q_x="{q_x}" q_y="{q_y}" q_z="{q_z}" x="{x}" y="{y}" z="{z}"/>
             <Action ID="MoveURGripper" fun="1" pin="10" state="0"/>
-            <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/>
+            <!-- <Action ID="MoveArmToJoints" joint1="-1.55" joint2="-1.83" joint3="-0.89" joint4="-1.99" joint5="1.54" joint6="0"/> -->
+
+            <!-- MoveToSafeTravel Pose -->
+            <!-- <Action ID="MoveArmToJoints" joint1="-1.56" joint2="-0.6" joint3="-1.69" joint4="-2.41" joint5="1.57" joint6="0"/>            -->
         </Sequence>
     </BehaviorTree>
 
+
     <!-- ////////// -->
+
     <TreeNodesModel>
         <Action ID="BoolParameterRequest">
             <input_port name="default_value" type="std::string"/>
@@ -215,6 +267,8 @@
         </Action>
         <Action ID="MoveBaseToTable">
             <input_port name="table_id" type="int"/>
+            <input_port name="table_side" type="int"/>
+            <input_port name="type" type="int"/>
         </Action>
         <Action ID="MoveURGripper">
             <input_port name="fun" type="int"/>
@@ -256,6 +310,7 @@
             <input_port name="title" type="std::string"/>
             <output_port name="value" type="std::string"/>
         </Action>
+        <SubTree ID="SubTree"/>
         <Action ID="Wait">
             <input_port name="seconds" type="int"/>
         </Action>

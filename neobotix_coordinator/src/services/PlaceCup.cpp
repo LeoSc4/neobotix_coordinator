@@ -58,7 +58,7 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
          case 1:
             x_offset = -0.15;
             y_offset = 0.1;
-            z_offset = 0.12;
+            z_offset = 0.11;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
@@ -68,7 +68,7 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
          case 2:
             x_offset = 0.0;
             y_offset = 0.1;
-            z_offset = 0.12;
+            z_offset = 0.11;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
@@ -78,7 +78,7 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
         case 3:
             x_offset = 0.15;
             y_offset = 0.1;
-            z_offset = 0.125;          
+            z_offset = 0.11;          
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
@@ -87,7 +87,7 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
         case 4:
             x_offset = -0.065;
             y_offset = 0.1;
-            z_offset = 0.125;
+            z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
@@ -96,7 +96,7 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
         case 5:  
             x_offset = 0.065;
             y_offset = 0.1;
-            z_offset = 0.125;
+            z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;
@@ -105,7 +105,7 @@ void PlaceCup::on_send(std::shared_ptr<PlaceCupSrv::Request> request)
         case 6:  
             x_offset = 0.0 ;
             y_offset = 0.18;
-            z_offset = 0.125;
+            z_offset = 0.12;
             q_x_offset = 0.0;
             q_y_offset = 0.0;
             q_z_offset = 0.0;

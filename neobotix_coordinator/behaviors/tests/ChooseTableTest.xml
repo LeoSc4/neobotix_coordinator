@@ -3,8 +3,9 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="ChooseTable" Requested_Table="{table_id}" Send_Request="True"/>
-            <Action ID="MoveBaseToTable" table_id="{table_id}"/>
+            <!-- <Action ID="ChooseTable" Requested_Table="{table_id}" Send_Request="True"/> -->
+            <Action ID="MoveBaseToTable" table_id="1"/>
+
         </Sequence>
     </BehaviorTree>
     <!-- ////////// -->

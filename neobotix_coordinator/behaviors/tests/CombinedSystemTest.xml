@@ -3,14 +3,49 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <Action ID="MoveBaseToTable" table_id="1"/>
+            <Action ID="ChooseTable" Requested_Table="{table_id}" Send_Request="True"/>
+
+            <SubTree ID="MoveBaseToTableLeftSide" name="GetCupFromStack" __shared_blackboard ="true"/>
+            <SubTree ID="PickAndPlaceCupsToTable" name="PickAndPlaceCupsToTable"/>
+
+            <SubTree ID="MoveBaseToTableRightSide" name="GetCupFromStack" __shared_blackboard ="true"/>
+            <SubTree ID="PickAndPlaceCupsToTable" name="PickAndPlaceCupsToTable"/>
+            
+            <!-- 
+            <SubTree ID="MoveBaseToTableRightSide" name="GetCupFromStack"/>
             <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
-            <SubTree ID="PlaceCupToTable" name="PlaceCupToTable"/>
+            <SubTree ID="PlaceCupToTable" name="PlaceCupToTable"/>         
+            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
+            <SubTree ID="PlaceCupToTable_5" name="PlaceCupToTable_5"/>
+            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
+            <SubTree ID="PlaceCupToTable_4" name="PlaceCupToTable_4"/> 
+            -->
+        </Sequence>
+    </BehaviorTree>
+
+ <BehaviorTree ID="PickAndPlaceCupsToTable" name="PickAndPlaceCupsToTable">
+         <Sequence>
+            <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
+            <SubTree ID="PlaceCupToTable" name="PlaceCupToTable"/>         
             <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
             <SubTree ID="PlaceCupToTable_5" name="PlaceCupToTable_5"/>
             <SubTree ID="GetCupFromStack" name="GetCupFromStack"/>
             <SubTree ID="PlaceCupToTable_4" name="PlaceCupToTable_4"/>
+        </Sequence>
+    </BehaviorTree>
 
+
+    <BehaviorTree ID="MoveBaseToTableLeftSide">
+        <Sequence>
+            <Action ID="MoveBaseToTable" table_id="{table_id}" table_side = "1" type="1"/>
+            <Action ID="MoveBaseToTable" table_id="{table_id}" table_side = "1" type="2"/>
+        </Sequence>
+    </BehaviorTree>
+
+    <BehaviorTree ID="MoveBaseToTableRightSide">
+        <Sequence>
+            <Action ID="MoveBaseToTable" table_id="{table_id}" table_side = "2" type="1"/>
+            <Action ID="MoveBaseToTable" table_id="{table_id}" table_side = "2" type="2"/>
         </Sequence>
     </BehaviorTree>
 
